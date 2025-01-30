@@ -1,23 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class gun : MonoBehaviour
 {
-    private float horizontal;
-    private float vertical;
-    private float up;
+    public float rotationSpeed = 5.0f; // Скорость вращения
 
-    // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Mouse X");
-        vertical = Input.GetAxis("Mouse Y");
+        // Получаем горизонтальное движение мыши
+        float mouseX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
 
-        // Вращение по горизонтали
-        transform.Rotate(0, horizontal, 0);
-
-        // Вращение по вертикали
-        transform.Rotate(0, 0, vertical);
+        // Вращаем объект вокруг оси Y
+        transform.Rotate(0, mouseX, 0);
     }
 }
